@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page flex flex-column flex-1">
     <h1>Catalogue</h1>
     <div class="w-full">
       <DataTable :value="books" class="w-full" style="text-align: left">
@@ -48,13 +48,3 @@ const order = (id: number) => {
  }
 }
 </script>
-
-<style lang="scss" scoped>
-.page {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
-}
-</style>
