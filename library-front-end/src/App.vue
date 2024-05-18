@@ -9,17 +9,17 @@
 
 <script setup lang="ts">
 import Catalogue from "./components/Catalogue.vue";
-import {ref} from "vue";
+import { ref } from "vue";
 import MyRentals from "./components/MyRentals.vue";
 import Admin from "./components/Admin.vue";
-import Divider from 'primevue/divider';
+import Divider from "primevue/divider";
 
 const enum VIEW {
-  ADMIN = 'admin',
-  READER = 'reader'
+  ADMIN = "admin",
+  READER = "reader",
 }
 
-const currentVIew = ref(VIEW.READER)
+const currentVIew = ref(VIEW.ADMIN);
 </script>
 
 <style lang="scss" scoped></style>

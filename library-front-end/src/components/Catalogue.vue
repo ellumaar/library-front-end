@@ -33,18 +33,23 @@ import "primeicons/primeicons.css";
 import { ref } from "vue";
 
 const booksDummy = [
-  { id: 1, author: "Louis-Ferdinand Céline", title: "Reis öö lõppu", available: true },
+  {
+    id: 1,
+    author: "Louis-Ferdinand Céline",
+    title: "Reis öö lõppu",
+    available: true,
+  },
   { id: 2, author: "Clarice Lispector ", title: "Tähetund", available: false },
 ];
 
 const books = ref(booksDummy);
 
 const order = (id: number) => {
- const book = books.value.find((book) => {
-   return book.id === id
- })
- if (book?.available) {
-   // submit order
- }
-}
+  const book = books.value.find((book) => {
+    return book.id === id;
+  });
+  if (book?.available) {
+    // submit order
+  }
+};
 </script>

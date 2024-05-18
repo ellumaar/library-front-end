@@ -8,10 +8,7 @@
         <Column field="deadline" header="Deadline"></Column>
         <Column>
           <template #body="{ data }">
-            <Button
-                label="Return"
-                @click="bookReturn(data.id)"
-            />
+            <Button label="Return" @click="bookReturn(data.id)" />
           </template>
         </Column>
       </DataTable>
@@ -26,12 +23,17 @@ import Button from "primevue/button";
 import Column from "primevue/column";
 
 const myBooksDummy = [
-  { id: 1, author: "Louis-Ferdinand Céline", title: "Reis öö lõppu", deadline: '2024-20-05' },
+  {
+    id: 1,
+    author: "Louis-Ferdinand Céline",
+    title: "Reis öö lõppu",
+    deadline: "2024-20-05",
+  },
 ];
 
 const myBooks = ref(myBooksDummy);
 
 const bookReturn = (id: number) => {
   // send return request
-}
+};
 </script>
