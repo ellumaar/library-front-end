@@ -36,25 +36,14 @@ import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import Button from "primevue/button";
 import "primeicons/primeicons.css";
-
-import { ref } from "vue";
 import { ROUTE_PATHS } from "../router/paths.ts";
 import MyRentals from "./MyRentals.vue";
+import {useGetBooksQuery} from "../queries/queries.ts";
 
-const booksDummy = [
-  {
-    id: 1,
-    author: "Louis-Ferdinand Céline",
-    title: "Reis öö lõppu",
-    available: true,
-  },
-  { id: 2, author: "Clarice Lispector ", title: "Tähetund", available: false },
-];
-
-const books = ref(booksDummy);
+const { data: books } = useGetBooksQuery()
 
 const order = (id: number) => {
-  const book = books.value.find((book) => {
+  const book = books.value?.find((book) => {
     return book.id === id;
   });
   if (book?.available) {

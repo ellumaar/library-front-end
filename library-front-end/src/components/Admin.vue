@@ -5,7 +5,7 @@
     <Dialog
       v-model:visible="visible"
       modal
-      header="Edit Profile"
+      header="Add book"
       :style="{ width: '25rem' }"
     >
       <h5>Add new book</h5>
