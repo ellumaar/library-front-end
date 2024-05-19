@@ -1,5 +1,6 @@
 export enum ROUTE_PATHS {
-    CATALOGUE = '/catalogue'
+  CATALOGUE = "/catalogue",
+  ADMIN = "/admin",
 }
 
-export default { ROUTE_PATHS }
+export default { ROUTE_PATHS };

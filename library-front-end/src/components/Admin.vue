@@ -43,18 +43,18 @@
 </template>
 
 <script setup lang="ts">
-import {reactive, ref} from "vue";
+import { reactive, ref } from "vue";
 import Button from "primevue/button";
-import InputText from 'primevue/inputtext';
+import InputText from "primevue/inputtext";
 const visible = ref(false);
 
 const form = reactive({
-  author: '',
-  title: '',
-  isbn: '',
-  year: '',
-  pages: ''
-})
+  author: "",
+  title: "",
+  isbn: "",
+  year: "",
+  pages: "",
+});
 
 const addBook = () => {
   // add book
