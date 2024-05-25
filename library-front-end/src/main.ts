@@ -6,11 +6,11 @@ import "primeflex/primeflex.scss";
 import "primevue/resources/primevue.min.css";
 import Dialog from "primevue/dialog";
 import router from "./router";
-import axios from 'axios'
+import axios from "axios";
 import { QueryClient, VueQueryPlugin } from "@tanstack/vue-query";
 
-axios.defaults.baseURL = '/api/v1'
-axios.defaults.headers.common['Accept'] = 'application/json'
+axios.defaults.baseURL = "/api/v1";
+axios.defaults.headers.common["Accept"] = "application/json";
 
 const queryClient = new QueryClient({
   defaultOptions: {

@@ -46,11 +46,11 @@
 import { reactive, ref } from "vue";
 import Button from "primevue/button";
 import InputText from "primevue/inputtext";
-import {useAddBookMutation} from "../queries/queries.ts";
-import {Book} from "../models/models.ts";
+import { useAddBookMutation } from "../queries/queries.ts";
+import { Book } from "../models/models.ts";
 const visible = ref(false);
 
-const { mutateAsync: mutateAddBook } = useAddBookMutation()
+const { mutateAsync: mutateAddBook } = useAddBookMutation();
 
 const form = reactive<Book>({
   author: "",
@@ -63,12 +63,11 @@ const form = reactive<Book>({
 const addBook = async () => {
   try {
     await mutateAddBook(form).then((data) => {
-      console.log(data)
-      visible.value = false
-    })
-  } catch(error) {
-    console.log(error)
+      console.log(data);
+      visible.value = false;
+    });
+  } catch (error) {
+    console.log(error);
   }
-
 };
 </script>

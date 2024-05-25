@@ -17,7 +17,6 @@
               <template #body="{ data }">
                 <Button
                   label="Order"
-                  :disabled="!data.available"
                   @click="order(data.id)"
                 />
               </template>
@@ -34,20 +33,37 @@
 <script setup lang="ts">
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
+import Divider from "primevue/divider";
 import Button from "primevue/button";
 import "primeicons/primeicons.css";
 import { ROUTE_PATHS } from "../router/paths.ts";
 import MyRentals from "./MyRentals.vue";
-import {useGetBooksQuery} from "../queries/queries.ts";
+import {
+  useGetBooksQuery,
+  useSubmitRentalMutation,
+} from "../queries/queries.ts";
+import {RentalPayload} from "../models/models.ts";
 
-const { data: books } = useGetBooksQuery()
+const { data: books } = useGetBooksQuery();
+const { mutateAsync: mutateSubmitRental } = useSubmitRentalMutation();
 
-const order = (id: number) => {
+const order = async (id: number) => {
   const book = books.value?.find((book) => {
     return book.id === id;
   });
-  if (book?.available) {
-    // submit order
+  if (book?.id) { // and if book available
+    try {
+      const payload: RentalPayload = {
+        bookId: book.id,
+        borrowed: true
+      }
+      await mutateSubmitRental(payload).then((data) => {
+        console.log(data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 };
 </script>
