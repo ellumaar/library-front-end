@@ -51,3 +51,12 @@ export function useSubmitRentalMutation() {
     },
   });
 }
+
+export function useReturnBookMutation() {
+  return useMutation({
+    mutationFn: async (id: number) => {
+      const { data } = await axios.delete<void>(`books/return/${id}/`);
+      return data;
+    },
+  });
+}

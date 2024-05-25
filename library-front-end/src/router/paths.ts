@@ -1,5 +1,6 @@
 export enum ROUTE_PATHS {
   CATALOGUE = "/catalogue",
+  MY_BOOKS = "/mybooks",
   ADMIN = "/admin",
 }
 

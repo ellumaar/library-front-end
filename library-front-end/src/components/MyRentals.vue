@@ -20,11 +20,24 @@
 import DataTable from "primevue/datatable";
 import Button from "primevue/button";
 import Column from "primevue/column";
-import { useGetMyRentedBooksQuery } from "../queries/queries.ts";
+import {useGetMyRentedBooksQuery, useReturnBookMutation} from "../queries/queries.ts";
+import {Book} from "../models/models.ts";
 
 const { data: myBooks } = useGetMyRentedBooksQuery();
+const { mutateAsync: mutateAsync } = useReturnBookMutation()
 
-const bookReturn = (id: number) => {
-  // send return request
+const bookReturn = async (id: number) => {
+  const book = myBooks.value?.find((book: Book) => {
+    return book.id === id;
+  });
+  if (book?.id) {
+    try {
+      await mutateAsync(id).then((data) => {
+        console.log(data)
+      })
+    } catch(error) {
+      console.log(error)
+    }
+  }
 };
 </script>

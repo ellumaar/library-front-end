@@ -1,6 +1,7 @@
 <template>
   <div class="page flex flex-column flex-1">
     <router-link :to="ROUTE_PATHS.ADMIN">Admin view</router-link>
+    <router-link :to="ROUTE_PATHS.MY_BOOKS">My books</router-link>
     <div class="flex flex-row gap-4">
       <div class="w-9">
         <h1>Catalogue</h1>
@@ -24,8 +25,6 @@
           </DataTable>
         </div>
       </div>
-      <Divider />
-      <MyRentals />
     </div>
   </div>
 </template>
