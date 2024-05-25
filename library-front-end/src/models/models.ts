@@ -1,6 +1,9 @@
 export interface Book {
-    readonly id: number
+    readonly id?: number
     author: string
     title: string
-    available: boolean
+    isbn: string
+    year: number | undefined
+    pages: number | undefined
+    available?: boolean
 }

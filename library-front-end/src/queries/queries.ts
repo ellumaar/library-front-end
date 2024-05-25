@@ -1,6 +1,6 @@
 import { Book } from "../models/models.ts"
 import axios from 'axios'
-import { useQuery } from "@tanstack/vue-query"
+import {useMutation, useQuery} from "@tanstack/vue-query"
 
 const queryKeys = {
     all: ['all'] as const,
@@ -13,6 +13,15 @@ export function useGetBooksQuery() {
         queryKey: queryKeys.list(),
         queryFn: async () => {
             const { data } = await axios.get<Book[]>(`books/`)
+            return data
+        },
+    })
+}
+
+export function useAddBookMutation() {
+    return useMutation({
+        mutationFn: async (book: Book) => {
+            const { data } = await axios.post<Book>(`books/`, book)
             return data
         },
     })

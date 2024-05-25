@@ -36,7 +36,7 @@
           severity="secondary"
           @click="visible = false"
         ></Button>
-        <Button type="button" label="Save" @click="visible = false"></Button>
+        <Button type="button" label="Save" @click="addBook"></Button>
       </div>
     </Dialog>
   </div>
@@ -46,17 +46,29 @@
 import { reactive, ref } from "vue";
 import Button from "primevue/button";
 import InputText from "primevue/inputtext";
+import {useAddBookMutation} from "../queries/queries.ts";
+import {Book} from "../models/models.ts";
 const visible = ref(false);
 
-const form = reactive({
+const { mutateAsync: mutateAddBook } = useAddBookMutation()
+
+const form = reactive<Book>({
   author: "",
   title: "",
   isbn: "",
-  year: "",
-  pages: "",
+  year: undefined,
+  pages: undefined,
 });
 
-const addBook = () => {
-  // add book
+const addBook = async () => {
+  try {
+    await mutateAddBook(form).then((data) => {
+      console.log(data)
+      visible.value = false
+    })
+  } catch(error) {
+    console.log(error)
+  }
+
 };
 </script>
