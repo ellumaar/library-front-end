@@ -17,21 +17,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import DataTable from "primevue/datatable";
 import Button from "primevue/button";
 import Column from "primevue/column";
+import { useGetMyRentedBooksQuery } from "../queries/queries.ts";
 
-const myBooksDummy = [
-  {
-    id: 1,
-    author: "Louis-Ferdinand Céline",
-    title: "Reis öö lõppu",
-    deadline: "2024-20-05",
-  },
-];
-
-const myBooks = ref(myBooksDummy);
+const { data: myBooks } = useGetMyRentedBooksQuery();
 
 const bookReturn = (id: number) => {
   // send return request

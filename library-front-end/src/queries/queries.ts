@@ -6,6 +6,8 @@ const queryKeys = {
   all: ["all"] as const,
   lists: () => [queryKeys.all, "list"] as const,
   list: () => [queryKeys.lists()] as const,
+  myLists: () => [queryKeys.all, "myList"] as const,
+  myList: () => [queryKeys.myLists()] as const,
 };
 
 export function useGetBooksQuery() {
@@ -13,6 +15,16 @@ export function useGetBooksQuery() {
     queryKey: queryKeys.list(),
     queryFn: async () => {
       const { data } = await axios.get<Book[]>(`books/`);
+      return data;
+    },
+  });
+}
+
+export function useGetMyRentedBooksQuery() {
+  return useQuery({
+    queryKey: queryKeys.myList(),
+    queryFn: async () => {
+      const { data } = await axios.get<Book[]>(`books/myBooks/`);
       return data;
     },
   });
