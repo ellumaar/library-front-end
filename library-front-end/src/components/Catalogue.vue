@@ -18,7 +18,7 @@
               <template #body="{ data }">
                 <Button
                   label="Order"
-                  :disabled="!data.borrowed"
+                  :disabled="data.borrowed"
                   @click="order(data.id)"
                 />
               </template>
