@@ -18,6 +18,7 @@
               <template #body="{ data }">
                 <Button
                   label="Order"
+                  :disabled="!data.borrowed"
                   @click="order(data.id)"
                 />
               </template>
@@ -36,7 +37,6 @@ import Divider from "primevue/divider";
 import Button from "primevue/button";
 import "primeicons/primeicons.css";
 import { ROUTE_PATHS } from "../router/paths.ts";
-import MyRentals from "./MyRentals.vue";
 import {
   useGetBooksQuery,
   useSubmitRentalMutation,

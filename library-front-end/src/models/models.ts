@@ -5,7 +5,7 @@ export interface Book {
   isbn: string;
   year: number | undefined;
   pages: number | undefined;
-  available?: boolean;
+  borrowed?: boolean;
 }
 
 export interface RentalPayload {
